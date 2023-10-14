@@ -1,1 +1,14 @@
-<app-rooms></app-rooms>
+<h1>My App</h1>
+
+<div [ngSwitch]="role">
+    <div *ngSwitchCase="'User'">
+        Welcome User!
+    </div>
+    <div *ngSwitchCase="'Admin'">
+        <app-rooms></app-rooms>
+    </div>
+    <div *ngSwitchDefault>
+        Hi there!!
+    </div>
+
+</div>
