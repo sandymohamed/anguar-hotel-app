@@ -1,48 +1,36 @@
-<h1>Welcome to {{hotelName}} </h1>
+<div class="container">
+    <app-header></app-header>
 
-<div [hidden]="hideRooms">
+    <h3>Welcome to {{hotelName}} </h3>
 
-    number of rooms:
-    <span [ngStyle]="{'color': rooms.availableRooms ? 'green' : 'red' }"
-        [innerHTML]="numberOfRooms"></span>
-</div>
-<button (click)="toggle()">get rooms number</button>
+    <div [hidden]="hideRooms" class="p-5">
 
-<div *ngIf="rooms && rooms.availableRooms ">
+        number of rooms:
+        <span [ngStyle]="{'color': rooms.availableRooms ? 'green' : 'red' }"
+            [innerHTML]="numberOfRooms"></span>
+    </div>
+    <button class="btn btn-primary" (click)="toggle()">get rooms number</button>
 
-    <h1>
-        Rooms List {{ rooms.availableRooms <= 0 ? "No Rooms!" :
-        rooms.availableRooms}}
-    </h1>
-
+    <div *ngIf="rooms && rooms.availableRooms ">
+        <h1>
+            Rooms List {{ rooms.availableRooms <= 0 ? "No Rooms!" :
+            rooms.availableRooms}}
+        </h1>
+    </div>
     <br>
-    <table>
-        <tr>
-            <th>Index</th>
-            <th>Even/Odd</th>
-            <th>Room Number</th>
-            <th>Room Type</th>
-            <th>Room Rating</th>
-            <th>Room Price</th>
-            <th>Room Amentities</th>
-            <th>Checkin Time</th>
-            <!-- <th>Checkout Time</th> -->
+    <div *ngIf="selectedRooms">
+        {{selectedRooms | json}}
+    </div>
 
-        </tr>
-        <!-- slice is a pipe that take a slice from array -->
-        <tr [ngClass]="e? 'even' : 'odd' "
-            *ngFor="let room of roomList | slice: 0:2; let e=even; let o=odd; let i=index">
-            <td>{{i}}</td>
-            <td>{{ e ? "Even" : "Odd"}}</td>
-            <td> {{ room?.roomNumber }} </td>
-            <td> {{ room?.roomType | titlecase }} </td>
-            <td> {{ room?.rating | number: '1.0-1' }} </td>
-            <td> {{ room?.price | currency: 'EUR' }} </td>
-            <td> {{ room?.amenities }} </td>
-            <td> {{ room?.checkinTime | date: "dd/MM/yyyy" }} </td>
-        </tr>
-    </table>
-    <br>
+    <div>
+<!-- add rooms button -->
+
+<button class="btn btn-success mr-2" (click)="addRoom()" >Add Room</button>
+    </div>
+    <app-rooms-list
+        [rooms]="roomList"
+        [title]="title"
+        (selectRoom)="selectedRoom($event)"></app-rooms-list>
+
+    <!-- <p><ngb-progressbar type="success" [value]="25"></ngb-progressbar></p> -->
 </div>
-
-<hr>
