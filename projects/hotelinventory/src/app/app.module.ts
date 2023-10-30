@@ -10,6 +10,8 @@ import { HeaderComponent } from './header/header.component';
 import { ContainerComponent } from './container/container.component';
 import { EmployeeComponent } from './employee/employee.component';
 import { FormsModule } from '@angular/forms';
+import { LoginComponent } from './login/login.component';
+import { HoverDirective } from './hover.directive';
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,6 +20,8 @@ import { FormsModule } from '@angular/forms';
     HeaderComponent,
     ContainerComponent,
     EmployeeComponent,
+    LoginComponent,
+    HoverDirective,
     
   ],
   imports: [

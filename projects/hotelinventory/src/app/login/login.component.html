@@ -1,0 +1,13 @@
+<form (ngSubmit)="login()">
+
+    <div class="form-group">
+        <input appHover color="lightgreen" type="email" class="form-control" name="name"  [(ngModel)]="email" placeholder="email"  >
+    </div>
+    <div class="form-group">
+        <input appHover color="lightgreen" type="password" class="form-control" name="name"  [(ngModel)]="password" placeholder="password"  >
+    </div>
+
+    <div class="form-group">
+<button class=" btn btn-success">submit</button>
+    </div>
+</form>

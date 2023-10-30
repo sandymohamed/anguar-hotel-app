@@ -1,21 +1,17 @@
 <div class="container">
-    <app-header></app-header>
 
     <h3>Welcome to {{hotelName}} </h3>
 
     <div [hidden]="hideRooms" class="p-5">
 
         number of rooms:
-        <span [ngStyle]="{'color': rooms.availableRooms ? 'green' : 'red' }"
-            [innerHTML]="numberOfRooms"></span>
+        <span [ngStyle]="{'color': rooms.availableRooms ? 'green' : 'red' }" [innerHTML]="numberOfRooms"></span>
     </div>
     <button class="btn btn-primary" (click)="toggle()">get rooms number</button>
 
     <div *ngIf="rooms && rooms.availableRooms ">
         <h1>
-            Rooms List {{ rooms.availableRooms <= 0 ? "No Rooms!" :
-            rooms.availableRooms}}
-        </h1>
+            Rooms List {{ rooms.availableRooms <= 0 ? "No Rooms!" : rooms.availableRooms}} </h1>
     </div>
     <br>
     <div *ngIf="selectedRooms">
@@ -23,14 +19,11 @@
     </div>
 
     <div>
-<!-- add rooms button -->
+        <!-- add rooms button -->
 
-<button class="btn btn-success mr-2" (click)="addRoom()" >Add Room</button>
+        <a class="btn btn-success mr-2" (click)="addRoom()" [routerLink]="'/form'">Add Room</a>
     </div>
-    <app-rooms-list
-        [rooms]="roomList"
-        [title]="title"
-        (selectRoom)="selectedRoom($event)"></app-rooms-list>
+    <!-- <app-rooms-list [rooms]="roomList" [title]="title" (selectRoom)="selectedRoom($event)"></app-rooms-list> -->
 
     <!-- <p><ngb-progressbar type="success" [value]="25"></ngb-progressbar></p> -->
 </div>

@@ -1,13 +1,12 @@
-<p class="text-success">{{message}}</p>
-
-{{roomsForm.valid| json}}
-{{roomsForm.invalid| json}}
-{{roomsForm.dirty| json}}
-{{roomsForm.pristine| json}}
-{{roomsForm.value| json}}
 
 
-<form #roomsForm="ngForm" (ngSubmit)="AddRoom()">
+
+<form #roomsForm="ngForm" (ngSubmit)="AddRoom(roomsForm)" class="p-4 m-3 border">
+    valid: {{roomsForm.valid| json}} <br>
+    invalid: {{roomsForm.invalid| json}} <br>
+    dirty: {{roomsForm.dirty| json}} <br>
+    pristine: {{roomsForm.pristine| json}} <br>
+    value: {{roomsForm.value| json}} <br>
     <div class="form-group">
         <label>room type</label>
         <input required class="form-control" type="text" name="roomType" [(ngModel)]="room.roomType">
@@ -26,19 +25,20 @@
     </div>
     <div class="form-group">
         <label>room checkin time</label>
-        <input required class="form-control" type="datetime" name="checkintime" [(ngModel)]="room.checkinTime">
+        <input required class="form-control" type="datetime" name="checkinTime" [(ngModel)]="room.checkinTime">
     </div>
     <div class="form-group">
         <label>room checkout time</label>
-        <input required class="form-control" type="datetime" name="checkouttime" [(ngModel)]="room.checkoutTime">
+        <input required class="form-control" type="datetime" name="checkoutTime" [(ngModel)]="room.checkoutTime">
     </div>
-
+    
     <div class="form-group">
         <label>room rating</label>
         <input required class="form-control" type="number" name="rating" [(ngModel)]="room.rating">
     </div>
-
+    
     <div class="form-group">
         <button [disabled]="roomsForm.invalid" type="submit" class="btn btn-success">submit</button>
     </div>
+    <p class="text-success">{{message}}</p>
 </form>
